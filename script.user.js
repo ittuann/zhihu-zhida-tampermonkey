@@ -2,7 +2,7 @@
 // @name              移除知乎的知乎直答跳转链接
 // @name:en           Remove Zhida.ai Link at Zhihu Site
 // @description       将知乎网页中的知乎直答转为纯文本，去除样式和跳转
-// @description:en    Replace Zhida.ai links and styles with plain text at Zhihu site
+// @description:en    Remove Zhida.ai links and styles with plain text at Zhihu site
 // @source            https://github.com/ittuann/zhihu-zhida-tampermonkey
 // @namespace         https://github.com/ittuann/zhihu-zhida-tampermonkey
 // @match             *://*.zhihu.com/*
