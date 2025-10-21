@@ -36,22 +36,28 @@
 
   // Observe for dynamically added content
   const mo = new MutationObserver((mutations) => {
-    for (const mutation of mutations) {
-      if (mutation.addedNodes && mutation.addedNodes.length) {
-        mutation.addedNodes.forEach((node) => {
-          if (node.nodeType === 1) {
-            // element node
-            if (node.matches && node.matches("a.RichContent-EntityWord")) {
-              removeLink(node);
-            } else if (node.querySelectorAll) {
-              process(node);
-            }
-          }
-        });
-      }
-    }
-  });
-  mo.observe(document.body, { childList: true, subtree: true });
+    mutations.forEach((mutation) => {
+      if (!mutation.addedNodes.length) return;
 
-  (window.requestIdleCallback || window.setTimeout)(() => process(document), 800);
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.matches("a.RichContent-EntityWord")) {
+            removeLink(node);
+          } else if (node.querySelectorAll) {
+            process(node);
+          }
+        }
+      });
+    });
+  });
+  mo.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+
+  // idle callback to process initial content
+  (window.requestIdleCallback || window.setTimeout)(
+    () => process(document),
+    800,
+  );
 })();
