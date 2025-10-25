@@ -22,10 +22,32 @@
   function removeLink(a) {
     // Extract text content
     const text = a.textContent;
+    const parentSpan = a.parentElement;
+    const parentP = parentSpan ? parentSpan.parentElement : null;
 
     // Replace a tag
     const textNode = document.createTextNode(text);
     a.replaceWith(textNode);
+
+    // Unwrap empty span tag
+    if (
+      parentSpan &&
+      parentSpan.tagName === "SPAN" &&
+      parentSpan.attributes.length === 0 &&
+      parentSpan.children.length === 0
+    ) {
+      parentSpan.parentElement.insertBefore(textNode, parentSpan);
+      parentSpan.remove();
+    }
+
+    // Format p tag
+    if (parentP && parentP.tagName === "P") {
+      const pContent = parentP.textContent.trim();
+      const cleanP = document.createElement('p');
+      cleanP.setAttribute('data-pid', parentP.dataset.pid);
+      cleanP.textContent = pContent;
+      parentP.replaceWith(cleanP);
+    }
   }
 
   function process(root = document) {

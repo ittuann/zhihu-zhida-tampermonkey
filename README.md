@@ -3,7 +3,7 @@ Tampermonkey Script:  zhihu-zhida-tampermonkey
 移除知乎的知乎直答(Zhida.ai)跳转链接
 
 [![Greasy Fork Installs](https://img.shields.io/greasyfork/dt/553164.svg?logo=greasy-fork&logoColor=white&label=GreasyFork%20Installs)](https://greasyfork.org/scripts/553164)
-[![GitHub Releases Downloads](https://img.shields.io/github/downloads/ittuann/zhihu-zhida-tampermonkey/total.svg?logo=github&label=GitHub%20Downloads)](https://github.com/ittuann/zhihu-zhida-tampermonkey/releases)
+[![GitHub Releases Downloads](https://img.shields.io/github/downloads/ittuann/zhihu-zhida-tampermonkey/total.svg?logo=github&label=GitHub%20Downloads)](https://github.com/ittuann/zhihu-zhida-tampermonkey/releases/latest/)
 
 ## 效果截图
 
