@@ -39,15 +39,6 @@
       parentSpan.parentElement.insertBefore(textNode, parentSpan);
       parentSpan.remove();
     }
-
-    // Format p tag
-    if (parentP && parentP.tagName === "P") {
-      const pContent = parentP.textContent.trim();
-      const cleanP = document.createElement('p');
-      cleanP.setAttribute('data-pid', parentP.dataset.pid);
-      cleanP.textContent = pContent;
-      parentP.replaceWith(cleanP);
-    }
   }
 
   function process(root = document) {
@@ -63,9 +54,10 @@
 
       mutation.addedNodes.forEach((node) => {
         if (node.nodeType === Node.ELEMENT_NODE) {
-          if (node.matches("a.RichContent-EntityWord")) {
-            removeLink(node);
-          } else if (node.querySelectorAll) {
+          if (
+            node.matches("a.RichContent-EntityWord") ||
+            node.querySelectorAll("a.RichContent-EntityWord")
+          ) {
             process(node);
           }
         }
